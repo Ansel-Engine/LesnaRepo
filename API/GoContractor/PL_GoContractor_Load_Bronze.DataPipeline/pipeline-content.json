@@ -1,0 +1,50 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "ea806d01-7f20-b4f4-4eaf-ce0da5cead4f",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "p_SRC_TABLE": {
+              "value": "stg_gocontractor_accounts",
+              "type": "string"
+            },
+            "p_DST_TABLE": {
+              "value": "bronze_gocontractor_accounts",
+              "type": "string"
+            }
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "nb_GoContractor_Bronze_Accounts",
+        "description": "This Notebook explicitly uses the source and target by passing these table names in as parameters (i.e. hard-coded for this table only):\nSRC_TABLE  = \"stg_gocontractor_accounts\"\nDST_TABLE  = \"bronze_gocontractor_accounts\"\n\nAlthough the code is much more controlled (i.e we can create a Notebook for each and every table to extract), we can also use the other method which loops through a Watermark table - see the other Notebook in this Pipeline - not fully developed - but is used by Keepmoat for extracting HR data).",
+        "dependsOn": []
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "bdd12636-9e96-a844-4980-c4b1e632b3ea",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "nb_sample_code _to_extract_from_bronze_to_silver",
+        "description": "See notes in Notebook.",
+        "dependsOn": []
+      }
+    ]
+  }
+}

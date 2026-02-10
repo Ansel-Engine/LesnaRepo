@@ -1,0 +1,406 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "RestSource",
+            "requestMethod": "GET",
+            "additionalHeaders": {
+              "Authorization": "Bearer gc_vl3cOW16XE2t1mOarHNkfwIVpV1p2DMkiPPGK7wr12uw"
+            },
+            "paginationRules": {
+              "MaxRequestNumber": {
+                "value": "@{int(variables('var_num_Total_Pages'))}",
+                "type": "Expression"
+              },
+              "AbsoluteUrl": "$.pagination.nextPage"
+            },
+            "httpRequestTimeout": "00:01:40",
+            "requestInterval": "00.00:00:00.010",
+            "additionalColumns": [
+              {
+                "name": "LoadDate",
+                "value": {
+                  "value": "@variables('var_str_Load_Date')\n",
+                  "type": "Expression"
+                }
+              }
+            ],
+            "datasetSettings": {
+              "type": "RestResource",
+              "typeProperties": {
+                "relativeUrl": "/api/v1/integration/Account?PageNumber=0"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "3ef20583-8364-4940-8e77-b3fff2b56bf1"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "OverwriteSchema",
+            "applyVOrder": true,
+            "partitionOption": "None",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "table": "stg_gocontractor_accounts"
+              },
+              "schema": [],
+              "connectionSettings": {
+                "name": "LS_Lakehouse",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "5970b70e-d9ac-a2da-4924-3b2dcde07ee3",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Tables"
+                  },
+                  "externalReferences": {
+                    "connection": "8f93ca41-d4db-4d7a-b411-71d01d400186"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "mappings": [
+              {
+                "source": {
+                  "name": "data.guid",
+                  "type": "String"
+                },
+                "sink": {
+                  "name": "guid",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "data.name",
+                  "type": "String"
+                },
+                "sink": {
+                  "name": "name",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "data.logoUrl",
+                  "type": "String"
+                },
+                "sink": {
+                  "name": "logoUrl",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "data.relationship",
+                  "type": "String"
+                },
+                "sink": {
+                  "name": "relationship",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "LoadDate",
+                  "type": "String"
+                },
+                "sink": {
+                  "name": "LoadDate",
+                  "physicalType": "timestamp"
+                }
+              }
+            ],
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            },
+            "columnFlattenSettings": {
+              "treatArrayAsString": false,
+              "treatStructAsString": false,
+              "flattenColumnDelimiter": "."
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "cd_GoContractor_Accounts_",
+        "description": "",
+        "dependsOn": [
+          {
+            "activity": "Set var_num_Total_Pages_accounts",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "WebActivity",
+        "typeProperties": {
+          "method": "GET",
+          "relativeUrl": "/api/v1/integration/Account?pageNumber=0",
+          "headers": {
+            "Authorization": "Bearer gc_vl3cOW16XE2t1mOarHNkfwIVpV1p2DMkiPPGK7wr12uw"
+          }
+        },
+        "externalReferences": {
+          "connection": "69954816-3b3b-422f-8bd9-0ac37006cb7c"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "ws_GoContrator_Accounts_Pagination_Data",
+        "dependsOn": [
+          {
+            "activity": "Set var_Load_Date",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "var_num_Total_Pages",
+          "value": {
+            "value": "@int(activity('ws_GoContrator_Accounts_Pagination_Data').output.pagination.numPages)",
+            "type": "Expression"
+          }
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set var_num_Total_Pages_accounts",
+        "dependsOn": [
+          {
+            "activity": "ws_GoContrator_Accounts_Pagination_Data",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "WebActivity",
+        "typeProperties": {
+          "method": "GET",
+          "relativeUrl": "/api/v1/integration/Worker?pageNumber=0",
+          "headers": {
+            "Authorization": "Bearer gc_vl3cOW16XE2t1mOarHNkfwIVpV1p2DMkiPPGK7wr12uw"
+          }
+        },
+        "externalReferences": {
+          "connection": "69954816-3b3b-422f-8bd9-0ac37006cb7c"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "ws_GoContrator_Worker_Pagination_Data",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [
+          {
+            "activity": "cd_GoContractor_Accounts_",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "var_num_Total_Pages",
+          "value": {
+            "value": "@int(activity('ws_GoContrator_Worker_Pagination_Data').output.pagination.numPages)",
+            "type": "Expression"
+          }
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set var_num_Total_Pages_workers",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [
+          {
+            "activity": "ws_GoContrator_Worker_Pagination_Data",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "RestSource",
+            "requestMethod": "GET",
+            "additionalHeaders": {
+              "Authorization": "Bearer gc_vl3cOW16XE2t1mOarHNkfwIVpV1p2DMkiPPGK7wr12uw"
+            },
+            "paginationRules": {
+              "MaxRequestNumber": {
+                "value": "8",
+                "type": "Expression"
+              },
+              "AbsoluteUrl": "$.pagination.nextPage"
+            },
+            "httpRequestTimeout": "00:01:40",
+            "requestInterval": "00.00:00:00.010",
+            "datasetSettings": {
+              "type": "RestResource",
+              "typeProperties": {
+                "relativeUrl": "/api/v1/integration/Worker?pageNumber=0"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "3ef20583-8364-4940-8e77-b3fff2b56bf1"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "JsonSink",
+            "formatSettings": {
+              "type": "JsonWriteSettings"
+            },
+            "storeSettings": {
+              "type": "LakehouseWriteSettings"
+            },
+            "datasetSettings": {
+              "type": "Json",
+              "typeProperties": {
+                "location": {
+                  "type": "LakehouseLocation",
+                  "folderPath": "GoContractor - Worker",
+                  "fileName": "Workers.json"
+                }
+              },
+              "schema": {},
+              "connectionSettings": {
+                "name": "LS_Lakehouse",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "cde07ee3-3b2d-4924-a2da-d9ac5970b70e",
+                    "workspaceId": "8bc6ea08-fd30-4ca7-be7f-dc76aee17419",
+                    "rootFolder": "Files"
+                  },
+                  "externalReferences": {
+                    "connection": "8f93ca41-d4db-4d7a-b411-71d01d400186"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "cd_GoContractor_Worker",
+        "description": "Saves to a file",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [
+          {
+            "activity": "Set var_num_Total_Pages_workers",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "b0b30ae7-52c6-443e-bbed-87b7b4800b74",
+          "workspaceId": "8bc6ea08-fd30-4ca7-be7f-dc76aee17419"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "nb_GoContractor_Worker",
+        "description": "Extracts out the file and into 5 tables.",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [
+          {
+            "activity": "cd_GoContractor_Worker",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "var_str_Load_Date",
+          "value": {
+            "value": "@utcNow()",
+            "type": "Expression"
+          }
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set var_Load_Date",
+        "dependsOn": []
+      }
+    ],
+    "variables": {
+      "var_num_Total_Pages": {
+        "type": "Integer",
+        "defaultValue": 0
+      },
+      "var_str_Load_Date": {
+        "type": "String"
+      }
+    }
+  }
+}

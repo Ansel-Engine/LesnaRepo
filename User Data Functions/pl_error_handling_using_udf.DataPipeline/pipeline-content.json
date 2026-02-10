@@ -1,0 +1,72 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Fail",
+        "typeProperties": {
+          "message": "This will always fail",
+          "errorCode": "007"
+        },
+        "name": "Fail",
+        "dependsOn": []
+      },
+      {
+        "type": "AzureFunctionActivity",
+        "typeProperties": {
+          "functionName": "insert_error2",
+          "functionSetId": "5abc0c9c-7564-b71f-48ad-f0711b1f1056",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "pipelinename": {
+              "value": "@pipeline().PipelineName",
+              "type": "Expression"
+            },
+            "rundate": {
+              "value": "@utcNow()",
+              "type": "Expression"
+            },
+            "runid": {
+              "value": "@pipeline().RunId",
+              "type": "Expression"
+            },
+            "pipelinestatus": {
+              "value": "@activity('Fail').Status",
+              "type": "Expression"
+            },
+            "pipelineid": {
+              "value": "@pipeline().Pipeline",
+              "type": "Expression"
+            },
+            "errormessage": {
+              "value": "@activity('Fail').error.message",
+              "type": "Expression"
+            },
+            "errorcode": {
+              "value": "@activity('Fail').error.errorCode",
+              "type": "Expression"
+            }
+          }
+        },
+        "externalReferences": {
+          "connection": "71747b4a-31db-4266-9ebf-172a808d5d4f"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Func_Log_Error_to_Database",
+        "dependsOn": [
+          {
+            "activity": "Fail",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

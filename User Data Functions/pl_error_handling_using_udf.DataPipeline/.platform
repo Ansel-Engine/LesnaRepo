@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "pl_error_handling_using_udf"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "3fce808b-db4c-b920-4acf-ecfc454c8ef1"
+  }
+}

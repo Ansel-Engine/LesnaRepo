@@ -1,0 +1,242 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "37f2374f-4a2d-bf85-4e08-b46025cfb59e",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "i_origins": {
+              "value": {
+                "value": "@variables('incoming_origins')",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "i_destinations": {
+              "value": {
+                "value": "@variables('incoming_destinations')",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "i_mode": {
+              "value": {
+                "value": "@variables('incoming_mode')",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "i_units": {
+              "value": "imperial",
+              "type": "string"
+            },
+            "i_key": {
+              "value": "AIzaSyB94X0cLJ5AicsA63FTASdWVhD0LYgSJ5o",
+              "type": "string"
+            }
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Notebook_call_Distance_Notebook",
+        "dependsOn": [
+          {
+            "activity": "Set incoming_origins",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          },
+          {
+            "activity": "Set incoming_destinations",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          },
+          {
+            "activity": "Set incoming_mode",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          },
+          {
+            "activity": "Set incoming_units",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          },
+          {
+            "activity": "Set incoming_key",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "var_distance",
+          "value": {
+            "value": "@json(activity('Notebook_call_Distance_Notebook').output.result.exitValue).Distance",
+            "type": "Expression"
+          }
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set var_distance",
+        "dependsOn": [
+          {
+            "activity": "Notebook_call_Distance_Notebook",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "var_duration",
+          "value": {
+            "value": "@json(activity('Notebook_call_Distance_Notebook').output.result.exitValue).Duration",
+            "type": "Expression"
+          }
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set var_duration",
+        "dependsOn": [
+          {
+            "activity": "Notebook_call_Distance_Notebook",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "incoming_origins",
+          "value": "HA3+8UF"
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set incoming_origins",
+        "dependsOn": []
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "incoming_destinations",
+          "value": "MK43+8JU"
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set incoming_destinations",
+        "dependsOn": []
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "incoming_mode",
+          "value": "driving"
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set incoming_mode",
+        "dependsOn": []
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "incoming_mode",
+          "value": "imperial"
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set incoming_units",
+        "description": "This is not being set in the call to the Notebook (the next step)",
+        "dependsOn": []
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "incoming_mode",
+          "value": "AIzaSyB94X0cLJ5AicsA63FTASdWVhD0LYgSJ5o"
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set incoming_key",
+        "description": "This is not being set in the call to the Notebook (the next step)",
+        "dependsOn": []
+      }
+    ],
+    "parameters": {
+      "origins": {
+        "type": "string",
+        "defaultValue": "HA3+8UF"
+      },
+      "destinations": {
+        "type": "string",
+        "defaultValue": "MK40+2ED"
+      },
+      "mode": {
+        "type": "string",
+        "defaultValue": "driving"
+      },
+      "units": {
+        "type": "string",
+        "defaultValue": "metric"
+      },
+      "key": {
+        "type": "string",
+        "defaultValue": "AIzaSyB94X0cLJ5AicsA63FTASdWVhD0LYgSJ5o"
+      }
+    },
+    "variables": {
+      "var_distance": {
+        "type": "String"
+      },
+      "var_duration": {
+        "type": "String"
+      },
+      "incoming_origins": {
+        "type": "String"
+      },
+      "incoming_destinations": {
+        "type": "String"
+      },
+      "incoming_mode": {
+        "type": "String"
+      },
+      "incoming_units": {
+        "type": "String"
+      },
+      "incoming_key": {
+        "type": "String"
+      }
+    }
+  }
+}
