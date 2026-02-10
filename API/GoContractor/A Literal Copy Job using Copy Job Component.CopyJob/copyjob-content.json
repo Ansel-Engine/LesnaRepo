@@ -1,0 +1,82 @@
+{
+  "properties": {
+    "jobMode": "Batch",
+    "source": {
+      "type": "RestResource",
+      "connectionSettings": {
+        "type": "RestService",
+        "externalReferences": {
+          "connection": "b4bddcc5-4013-4a16-b50d-1f05e7d625af"
+        }
+      },
+      "additionalSettings": {
+        "protocolSettings": {
+          "requestMethod": "GET",
+          "requestTimeout": "00:01:40",
+          "requestInterval": "00.00:00:00.010",
+          "additionalHeaders": {
+            "Authorization": "Bearer gc_vl3cOW16XE2t1mOarHNkfwIVpV1p2DMkiPPGK7wr12uw"
+          }
+        }
+      }
+    },
+    "destination": {
+      "type": "LakehouseTable",
+      "connectionSettings": {
+        "type": "Lakehouse",
+        "typeProperties": {
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "artifactId": "5970b70e-d9ac-a2da-4924-3b2dcde07ee3",
+          "rootFolder": "Tables"
+        },
+        "externalReferences": {
+          "connection": "8f93ca41-d4db-4d7a-b411-71d01d400186"
+        }
+      }
+    },
+    "policy": {
+      "timeout": "0.12:00:00"
+    }
+  },
+  "activities": [
+    {
+      "id": "b2acd57d-8630-4dc8-a159-585607418f97",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "relativeUrl": "/api/v1/integration/Account"
+          },
+          "protocolSettings": {
+            "requestMethod": "GET",
+            "requestTimeout": "00:01:40",
+            "requestInterval": "00.00:00:00.010",
+            "additionalHeaders": {
+              "Authorization": "Bearer gc_vl3cOW16XE2t1mOarHNkfwIVpV1p2DMkiPPGK7wr12uw"
+            }
+          }
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "table": "restResource"
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        },
+        "columnFlattenSettings": {
+          "expandArrayIntoMultipleRows": true,
+          "flattenNestedProperties": true,
+          "flattenColumnDelimiter": "."
+        }
+      }
+    }
+  ]
+}
