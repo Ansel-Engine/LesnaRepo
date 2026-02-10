@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "Notebook_GoContractor_Workers"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "fed4ffdb-8568-a102-417c-802c4b11cf46"
+  }
+}
