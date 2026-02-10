@@ -1,0 +1,180 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "var_date_Load_Date",
+          "value": {
+            "value": "@utcNow()",
+            "type": "Expression"
+          }
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set variable1",
+        "dependsOn": []
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "RestSource",
+            "requestMethod": "GET",
+            "additionalHeaders": {
+              "Authorization": "Bearer gc_vl3cOW16XE2t1mOarHNkfwIVpV1p2DMkiPPGK7wr12uw"
+            },
+            "paginationRules": {
+              "MaxRequestNumber": {
+                "value": "1",
+                "type": "Expression"
+              },
+              "AbsoluteUrl": "$.pagination.nextPage"
+            },
+            "httpRequestTimeout": "00:01:40",
+            "requestInterval": "00.00:00:00.010",
+            "additionalColumns": [
+              {
+                "name": "LoadDate",
+                "value": {
+                  "value": "@variables('var_date_Load_Date')\n",
+                  "type": "Expression"
+                }
+              }
+            ],
+            "datasetSettings": {
+              "type": "RestResource",
+              "typeProperties": {
+                "relativeUrl": "/api/v1/integration/Account?PageNumber=0"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "3ef20583-8364-4940-8e77-b3fff2b56bf1"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "OverwriteSchema",
+            "applyVOrder": true,
+            "partitionOption": "None",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "table": "stg_gocontractor_accounts"
+              },
+              "schema": [],
+              "connectionSettings": {
+                "name": "LS_Lakehouse",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "5970b70e-d9ac-a2da-4924-3b2dcde07ee3",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Tables"
+                  },
+                  "externalReferences": {
+                    "connection": "8f93ca41-d4db-4d7a-b411-71d01d400186"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "mappings": [
+              {
+                "source": {
+                  "name": "data.guid",
+                  "type": "String"
+                },
+                "sink": {
+                  "name": "data.guid",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "data.name",
+                  "type": "String"
+                },
+                "sink": {
+                  "name": "data.name",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "data.logoUrl",
+                  "type": "String"
+                },
+                "sink": {
+                  "name": "data.logoUrl",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "data.relationship",
+                  "type": "String"
+                },
+                "sink": {
+                  "name": "data.relationship",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "LoadDate",
+                  "type": "String"
+                },
+                "sink": {
+                  "name": "LoadDate",
+                  "physicalType": "timestamp"
+                }
+              }
+            ],
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            },
+            "columnFlattenSettings": {
+              "treatArrayAsString": false,
+              "treatStructAsString": false,
+              "flattenColumnDelimiter": "."
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "cd_GoContractor_Accounts_",
+        "description": "",
+        "dependsOn": [
+          {
+            "activity": "Set variable1",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          }
+        ]
+      }
+    ],
+    "variables": {
+      "var_date_Load_Date": {
+        "type": "String"
+      }
+    }
+  }
+}
