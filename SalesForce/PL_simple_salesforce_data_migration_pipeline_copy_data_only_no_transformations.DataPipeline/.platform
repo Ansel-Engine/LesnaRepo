@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "PL_simple_salesforce_data_migration_pipeline_copy_data_only_no_transformations",
+    "description": ""
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "47f0e339-cb14-b842-41fd-72386912e778"
+  }
+}
