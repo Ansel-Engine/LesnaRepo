@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Dataflow",
+    "displayName": "DF_Call_Distance_Matrix_API"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "fe27f9c6-5cff-a3d9-4353-33150fd266ea"
+  }
+}

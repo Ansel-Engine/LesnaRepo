@@ -1,0 +1,32 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "DFG2_LesnaShah_database_to_Silver_ODS",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "gatewayObjectId": "4ee82838-56ca-472a-9d6e-f3cbc3bd2280",
+  "queriesMetadata": {
+    "ZENDESK Z_Organisations": {
+      "queryId": "ea27490e-478a-4a3f-8379-488bf1793e80",
+      "queryName": "ZENDESK Z_Organisations"
+    },
+    "ZENDESK Z_Organisations_DataDestination": {
+      "queryId": "903ee5fa-bd23-4550-887e-f51546f63a55",
+      "queryName": "ZENDESK Z_Organisations_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "10.0.1.12;LesnaShah",
+      "kind": "SQL",
+      "connectionId": "{\"ClusterId\":\"4ee82838-56ca-472a-9d6e-f3cbc3bd2280\",\"DatasourceId\":\"badaeeee-eb17-42a4-8454-a6dccb5d4e79\"}"
+    },
+    {
+      "path": "Warehouse",
+      "kind": "Warehouse",
+      "connectionId": "{\"ClusterId\":\"1e7c6227-466b-4cc3-ad3c-509dbfcb06df\",\"DatasourceId\":\"3fe2af49-72b6-48ca-ae83-edbb12c57458\"}"
+    }
+  ]
+}

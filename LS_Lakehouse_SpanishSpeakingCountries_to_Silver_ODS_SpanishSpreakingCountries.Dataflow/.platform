@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Dataflow",
+    "displayName": "LS_Lakehouse_SpanishSpeakingCountries_to_Silver_ODS_SpanishSpreakingCountries"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "2a586a81-c069-881b-4664-7f69d6f347bf"
+  }
+}

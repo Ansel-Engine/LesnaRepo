@@ -1,0 +1,31 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "Dataflow 2",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "Using SQL vw_latest_spanishspeakingcountries": {
+      "queryId": "c351da71-ded7-4fe6-b101-07f51dddf134",
+      "queryName": "Using SQL vw_latest_spanishspeakingcountries"
+    },
+    "vw_latest_spanishspeakingcountries_DataDestination": {
+      "queryId": "cafcdb46-b666-4e76-8ff5-bbf6c6f9fb82",
+      "queryName": "vw_latest_spanishspeakingcountries_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"1e7c6227-466b-4cc3-ad3c-509dbfcb06df\",\"DatasourceId\":\"8f93ca41-d4db-4d7a-b411-71d01d400186\"}"
+    },
+    {
+      "path": "Warehouse",
+      "kind": "Warehouse",
+      "connectionId": "{\"ClusterId\":\"1e7c6227-466b-4cc3-ad3c-509dbfcb06df\",\"DatasourceId\":\"3fe2af49-72b6-48ca-ae83-edbb12c57458\"}"
+    }
+  ]
+}
