@@ -1,0 +1,78 @@
+{
+  "runtime": "PYTHON",
+  "functionsMetadata": [
+    {
+      "name": "insert_error2",
+      "scriptFile": "function_app.py",
+      "bindings": [
+        {
+          "name": "req",
+          "type": "HttpTrigger",
+          "direction": "In",
+          "authLevel": "Anonymous",
+          "methods": [
+            "POST"
+          ],
+          "route": ""
+        },
+        {
+          "name": "sqlDB",
+          "type": "FabricItem",
+          "direction": "In",
+          "alias": "ASQLDatabase",
+          "subType": "FabricSqlConnection",
+          "itemType": null,
+          "audienceType": null
+        }
+      ],
+      "fabricProperties": {
+        "fabricMetadataSchemaVersion": "1.1.0",
+        "fabricFunctionReturnType": "list",
+        "fabricFunctionParameters": [
+          {
+            "name": "pipelinename",
+            "dataType": "str",
+            "hasDefaultValue": false,
+            "defaultValue": null
+          },
+          {
+            "name": "rundate",
+            "dataType": "str",
+            "hasDefaultValue": false,
+            "defaultValue": null
+          },
+          {
+            "name": "runid",
+            "dataType": "str",
+            "hasDefaultValue": false,
+            "defaultValue": null
+          },
+          {
+            "name": "pipelinestatus",
+            "dataType": "str",
+            "hasDefaultValue": false,
+            "defaultValue": null
+          },
+          {
+            "name": "pipelineid",
+            "dataType": "str",
+            "hasDefaultValue": false,
+            "defaultValue": null
+          },
+          {
+            "name": "errormessage",
+            "dataType": "str",
+            "hasDefaultValue": false,
+            "defaultValue": null
+          },
+          {
+            "name": "errorcode",
+            "dataType": "str",
+            "hasDefaultValue": false,
+            "defaultValue": null
+          }
+        ]
+      }
+    }
+  ]
+}
