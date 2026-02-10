@@ -14,7 +14,7 @@
 # Welcome to your new notebook
 # Type here in the cell editor to add code!
 #    Let's hope this change goes into GitHub!
-#    Chocolate moose
+#    There is nothing better than chocolate moose
 
 # METADATA ********************
 
