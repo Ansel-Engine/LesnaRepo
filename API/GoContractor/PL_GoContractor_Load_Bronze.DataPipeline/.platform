@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "PL_GoContractor_Load_Bronze"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "bada3cc9-844f-9072-4390-a3c8043cdb60"
+  }
+}

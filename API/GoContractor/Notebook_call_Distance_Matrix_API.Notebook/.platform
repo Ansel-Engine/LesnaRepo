@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "Notebook_call_Distance_Matrix_API"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "37f2374f-4a2d-bf85-4e08-b46025cfb59e"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "Notebook_Distance"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "fa8d3178-2272-b9d7-45ba-2273bee2acaa"
+  }
+}

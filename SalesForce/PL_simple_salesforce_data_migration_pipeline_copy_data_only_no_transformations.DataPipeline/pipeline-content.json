@@ -1,0 +1,775 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "SalesforceSource",
+            "includeDeletedObjects": false,
+            "datasetSettings": {
+              "type": "SalesforceObject",
+              "typeProperties": {
+                "objectApiName": "Account"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "60758ef7-c778-4cd6-b9c6-65947ac9ff49"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "Append",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "table": "Account"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "LH_Fabric",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "5970b70e-d9ac-a2da-4924-3b2dcde07ee3",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "mappings": [
+              {
+                "source": {
+                  "name": "Id",
+                  "type": "String",
+                  "physicalType": "id"
+                },
+                "sink": {
+                  "name": "Id",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "IsDeleted",
+                  "type": "Boolean",
+                  "physicalType": "boolean"
+                },
+                "sink": {
+                  "name": "IsDeleted",
+                  "physicalType": "boolean"
+                }
+              },
+              {
+                "source": {
+                  "name": "MasterRecordId",
+                  "type": "String",
+                  "physicalType": "reference"
+                },
+                "sink": {
+                  "name": "MasterRecordId",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Name",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "Name",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Type",
+                  "type": "String",
+                  "physicalType": "picklist"
+                },
+                "sink": {
+                  "name": "Type",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "ParentId",
+                  "type": "String",
+                  "physicalType": "reference"
+                },
+                "sink": {
+                  "name": "ParentId",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "BillingStreet",
+                  "type": "String",
+                  "physicalType": "textarea"
+                },
+                "sink": {
+                  "name": "BillingStreet",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "BillingCity",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "BillingCity",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "BillingState",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "BillingState",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "BillingPostalCode",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "BillingPostalCode",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "BillingCountry",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "BillingCountry",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "BillingLatitude",
+                  "type": "Decimal",
+                  "physicalType": "double"
+                },
+                "sink": {
+                  "name": "BillingLatitude",
+                  "physicalType": "decimal"
+                }
+              },
+              {
+                "source": {
+                  "name": "BillingLongitude",
+                  "type": "Decimal",
+                  "physicalType": "double"
+                },
+                "sink": {
+                  "name": "BillingLongitude",
+                  "physicalType": "decimal"
+                }
+              },
+              {
+                "source": {
+                  "name": "BillingGeocodeAccuracy",
+                  "type": "String",
+                  "physicalType": "picklist"
+                },
+                "sink": {
+                  "name": "BillingGeocodeAccuracy",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "ShippingStreet",
+                  "type": "String",
+                  "physicalType": "textarea"
+                },
+                "sink": {
+                  "name": "ShippingStreet",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "ShippingCity",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "ShippingCity",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "ShippingState",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "ShippingState",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "ShippingPostalCode",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "ShippingPostalCode",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "ShippingCountry",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "ShippingCountry",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "ShippingLatitude",
+                  "type": "Decimal",
+                  "physicalType": "double"
+                },
+                "sink": {
+                  "name": "ShippingLatitude",
+                  "physicalType": "decimal"
+                }
+              },
+              {
+                "source": {
+                  "name": "ShippingLongitude",
+                  "type": "Decimal",
+                  "physicalType": "double"
+                },
+                "sink": {
+                  "name": "ShippingLongitude",
+                  "physicalType": "decimal"
+                }
+              },
+              {
+                "source": {
+                  "name": "ShippingGeocodeAccuracy",
+                  "type": "String",
+                  "physicalType": "picklist"
+                },
+                "sink": {
+                  "name": "ShippingGeocodeAccuracy",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Phone",
+                  "type": "String",
+                  "physicalType": "phone"
+                },
+                "sink": {
+                  "name": "Phone",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Fax",
+                  "type": "String",
+                  "physicalType": "phone"
+                },
+                "sink": {
+                  "name": "Fax",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "AccountNumber",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "AccountNumber",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Website",
+                  "type": "String",
+                  "physicalType": "url"
+                },
+                "sink": {
+                  "name": "Website",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "PhotoUrl",
+                  "type": "String",
+                  "physicalType": "url"
+                },
+                "sink": {
+                  "name": "PhotoUrl",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Sic",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "Sic",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Industry",
+                  "type": "String",
+                  "physicalType": "picklist"
+                },
+                "sink": {
+                  "name": "Industry",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "AnnualRevenue",
+                  "type": "Decimal",
+                  "physicalType": "currency"
+                },
+                "sink": {
+                  "name": "AnnualRevenue",
+                  "physicalType": "decimal"
+                }
+              },
+              {
+                "source": {
+                  "name": "NumberOfEmployees",
+                  "type": "Int32",
+                  "physicalType": "int"
+                },
+                "sink": {
+                  "name": "NumberOfEmployees",
+                  "physicalType": "integer"
+                }
+              },
+              {
+                "source": {
+                  "name": "Ownership",
+                  "type": "String",
+                  "physicalType": "picklist"
+                },
+                "sink": {
+                  "name": "Ownership",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "TickerSymbol",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "TickerSymbol",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Description",
+                  "type": "String",
+                  "physicalType": "textarea"
+                },
+                "sink": {
+                  "name": "Description",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Rating",
+                  "type": "String",
+                  "physicalType": "picklist"
+                },
+                "sink": {
+                  "name": "Rating",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Site",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "Site",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "OwnerId",
+                  "type": "String",
+                  "physicalType": "reference"
+                },
+                "sink": {
+                  "name": "OwnerId",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "CreatedDate",
+                  "type": "DateTime",
+                  "physicalType": "datetime"
+                },
+                "sink": {
+                  "name": "CreatedDate",
+                  "physicalType": "timestamp"
+                }
+              },
+              {
+                "source": {
+                  "name": "CreatedById",
+                  "type": "String",
+                  "physicalType": "reference"
+                },
+                "sink": {
+                  "name": "CreatedById",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "LastModifiedDate",
+                  "type": "DateTime",
+                  "physicalType": "datetime"
+                },
+                "sink": {
+                  "name": "LastModifiedDate",
+                  "physicalType": "timestamp"
+                }
+              },
+              {
+                "source": {
+                  "name": "LastModifiedById",
+                  "type": "String",
+                  "physicalType": "reference"
+                },
+                "sink": {
+                  "name": "LastModifiedById",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "SystemModstamp",
+                  "type": "DateTime",
+                  "physicalType": "datetime"
+                },
+                "sink": {
+                  "name": "SystemModstamp",
+                  "physicalType": "timestamp"
+                }
+              },
+              {
+                "source": {
+                  "name": "LastActivityDate",
+                  "type": "DateTime",
+                  "physicalType": "date"
+                },
+                "sink": {
+                  "name": "LastActivityDate",
+                  "physicalType": "timestamp"
+                }
+              },
+              {
+                "source": {
+                  "name": "LastViewedDate",
+                  "type": "DateTime",
+                  "physicalType": "datetime"
+                },
+                "sink": {
+                  "name": "LastViewedDate",
+                  "physicalType": "timestamp"
+                }
+              },
+              {
+                "source": {
+                  "name": "LastReferencedDate",
+                  "type": "DateTime",
+                  "physicalType": "datetime"
+                },
+                "sink": {
+                  "name": "LastReferencedDate",
+                  "physicalType": "timestamp"
+                }
+              },
+              {
+                "source": {
+                  "name": "Jigsaw",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "Jigsaw",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "JigsawCompanyId",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "JigsawCompanyId",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "CleanStatus",
+                  "type": "String",
+                  "physicalType": "picklist"
+                },
+                "sink": {
+                  "name": "CleanStatus",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "AccountSource",
+                  "type": "String",
+                  "physicalType": "picklist"
+                },
+                "sink": {
+                  "name": "AccountSource",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "DunsNumber",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "DunsNumber",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Tradestyle",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "Tradestyle",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "NaicsCode",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "NaicsCode",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "NaicsDesc",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "NaicsDesc",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "YearStarted",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "YearStarted",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "SicDesc",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "SicDesc",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "DandbCompanyId",
+                  "type": "String",
+                  "physicalType": "reference"
+                },
+                "sink": {
+                  "name": "DandbCompanyId",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "OperatingHoursId",
+                  "type": "String",
+                  "physicalType": "reference"
+                },
+                "sink": {
+                  "name": "OperatingHoursId",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "CustomerPriority__c",
+                  "type": "String",
+                  "physicalType": "picklist"
+                },
+                "sink": {
+                  "name": "CustomerPriority__c",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "SLA__c",
+                  "type": "String",
+                  "physicalType": "picklist"
+                },
+                "sink": {
+                  "name": "SLA__c",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Active__c",
+                  "type": "String",
+                  "physicalType": "picklist"
+                },
+                "sink": {
+                  "name": "Active__c",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "NumberofLocations__c",
+                  "type": "Decimal",
+                  "physicalType": "double"
+                },
+                "sink": {
+                  "name": "NumberofLocations__c",
+                  "physicalType": "decimal"
+                }
+              },
+              {
+                "source": {
+                  "name": "UpsellOpportunity__c",
+                  "type": "String",
+                  "physicalType": "picklist"
+                },
+                "sink": {
+                  "name": "UpsellOpportunity__c",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "SLASerialNumber__c",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "SLASerialNumber__c",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "SLAExpirationDate__c",
+                  "type": "DateTime",
+                  "physicalType": "date"
+                },
+                "sink": {
+                  "name": "SLAExpirationDate__c",
+                  "physicalType": "timestamp"
+                }
+              }
+            ],
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "migrate_copy_data",
+        "dependsOn": []
+      }
+    ]
+  }
+}

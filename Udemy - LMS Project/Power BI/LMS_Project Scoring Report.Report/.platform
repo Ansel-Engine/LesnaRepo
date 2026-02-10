@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "LMS_Project Scoring Report"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "0b62400c-b895-9b57-4c98-b65f12fd0556"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "RestSource",
+            "requestMethod": "GET",
+            "paginationRules": {
+              "supportRFC5988": "true"
+            },
+            "httpRequestTimeout": "00:01:40",
+            "requestInterval": "00.00:00:00.010",
+            "datasetSettings": {
+              "type": "RestResource",
+              "typeProperties": {
+                "relativeUrl": {
+                  "value": "@CONCAT('/v3.1/lang/',pipeline().parameters.language)",
+                  "type": "Expression"
+                }
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "d2c0e639-0d5f-4b9d-af04-150439795787"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "JsonSink",
+            "formatSettings": {
+              "type": "JsonWriteSettings"
+            },
+            "storeSettings": {
+              "type": "LakehouseWriteSettings"
+            },
+            "datasetSettings": {
+              "type": "Json",
+              "typeProperties": {
+                "location": {
+                  "type": "LakehouseLocation",
+                  "folderPath": {
+                    "value": "@concat(formatDateTime(utcnow(),'yyyy'), '/', \n        formatDateTime(utcnow(),'MM'),   '/', \n        formatDateTime(utcnow(),'dd'),   '/' )",
+                    "type": "Expression"
+                  },
+                  "fileName": "Countries.json"
+                }
+              },
+              "schema": {},
+              "linkedService": {
+                "name": "LH_Fabric",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "5970b70e-d9ac-a2da-4924-3b2dcde07ee3",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Files"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Get Data From REST Countries API",
+        "description": "https://restcountries.com/#endpoints-latest-added-enpoint",
+        "dependsOn": []
+      }
+    ],
+    "parameters": {
+      "language": {
+        "type": "string",
+        "defaultValue": "spanish"
+      }
+    }
+  }
+}

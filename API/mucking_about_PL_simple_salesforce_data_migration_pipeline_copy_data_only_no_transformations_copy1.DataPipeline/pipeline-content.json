@@ -1,0 +1,94 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "SalesforceSource",
+            "query": "select Id, IsDeleted from Account where Id = '001WU00000gUMnlYAG'",
+            "includeDeletedObjects": false,
+            "datasetSettings": {
+              "type": "SalesforceObject",
+              "typeProperties": {
+                "objectApiName": "Account"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "60758ef7-c778-4cd6-b9c6-65947ac9ff49"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "Append",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "table": "Account_30092025"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "LS_Lakehouse",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "5970b70e-d9ac-a2da-4924-3b2dcde07ee3",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "mappings": [
+              {
+                "source": {
+                  "name": "Id",
+                  "type": "String",
+                  "physicalType": "id"
+                },
+                "sink": {
+                  "name": "Id",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "IsDeleted",
+                  "type": "Boolean",
+                  "physicalType": "boolean"
+                },
+                "sink": {
+                  "name": "IsDeleted",
+                  "physicalType": "boolean"
+                }
+              }
+            ],
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "migrate_copy_data",
+        "dependsOn": []
+      }
+    ]
+  }
+}

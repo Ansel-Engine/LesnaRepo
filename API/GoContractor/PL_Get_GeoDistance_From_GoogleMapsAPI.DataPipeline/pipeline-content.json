@@ -1,0 +1,161 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "var_distance",
+          "value": {
+            "value": "@json(string(activity('Notebook_Distance').output.result.exitValue)).DistanceMiles\n",
+            "type": "Expression"
+          }
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set var_distance",
+        "dependsOn": [
+          {
+            "activity": "Notebook_Distance",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "incoming_postcode1_from",
+          "value": {
+            "value": "@pipeline().parameters.postcode1",
+            "type": "Expression"
+          }
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set incoming_postcode1_from",
+        "dependsOn": []
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "incoming _postcode2_to",
+          "value": {
+            "value": "@pipeline().parameters.postcode2",
+            "type": "Expression"
+          }
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set incoming_postcode2_to",
+        "dependsOn": []
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "incoming_key",
+          "value": "AIzaSyDCjvuVQGZFeA5fgYOGFjWWApuzFWT4N74"
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set incoming_key",
+        "description": "This is not being set in the call to the Notebook (the next step)",
+        "dependsOn": []
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "fa8d3178-2272-b9d7-45ba-2273bee2acaa",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "postcode1": {
+              "value": {
+                "value": "@variables('incoming_postcode1_from')",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "postcode2": {
+              "value": {
+                "value": "@variables('incoming _postcode2_to')",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "api_key": {
+              "value": {
+                "value": "@variables('incoming_key')",
+                "type": "Expression"
+              },
+              "type": "string"
+            }
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Notebook_Distance",
+        "dependsOn": [
+          {
+            "activity": "Set incoming_postcode1_from",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          },
+          {
+            "activity": "Set incoming_postcode2_to",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          },
+          {
+            "activity": "Set incoming_key",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          }
+        ]
+      }
+    ],
+    "parameters": {
+      "postcode1": {
+        "type": "string",
+        "defaultValue": "SW1A 1AA"
+      },
+      "postcode2": {
+        "type": "string",
+        "defaultValue": "OX1 2JD"
+      },
+      "api_key": {
+        "type": "string",
+        "defaultValue": "AIzaSyDCjvuVQGZFeA5fgYOGFjWWApuzFWT4N74"
+      }
+    },
+    "variables": {
+      "var_distance": {
+        "type": "Integer"
+      },
+      "incoming_key": {
+        "type": "String"
+      },
+      "incoming _postcode2_to": {
+        "type": "String"
+      },
+      "incoming_postcode1_from": {
+        "type": "String"
+      }
+    }
+  }
+}

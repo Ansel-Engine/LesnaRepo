@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "PL_Get_GeoDistance_From_GoogleMapsAPI"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "ff34b269-72b2-91f9-4227-7cb9035293dc"
+  }
+}

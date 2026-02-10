@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "Pipeline - GetDataFromCountryAPI - into Countries.JSON file in the LH - using dynamic file path in target"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "be47ebc9-aaca-b4d6-4c50-7fb35ca046b1"
+  }
+}

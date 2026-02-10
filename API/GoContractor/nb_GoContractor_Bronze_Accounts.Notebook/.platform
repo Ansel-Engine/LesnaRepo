@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "nb_GoContractor_Bronze_Accounts",
+    "description": ""
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "ea806d01-7f20-b4f4-4eaf-ce0da5cead4f"
+  }
+}

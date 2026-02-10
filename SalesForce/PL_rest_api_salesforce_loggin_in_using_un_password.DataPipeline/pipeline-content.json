@@ -1,0 +1,31 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "Web1",
+        "type": "WebActivity",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "method": "POST",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "body": {
+            "email": "lesnab@mail.com",
+            "password": "SalesForce100!!"
+          }
+        },
+        "externalReferences": {
+          "connection": "87ff6e21-dad4-4ce8-9d1a-943c384b6534"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "PL_simple_read_data_from_rest_api - no authentication",
+    "description": ""
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5b87ace6-44fa-be48-421c-89f12e978761"
+  }
+}

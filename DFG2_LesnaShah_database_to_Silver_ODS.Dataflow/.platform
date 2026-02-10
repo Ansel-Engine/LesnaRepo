@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Dataflow",
+    "displayName": "DFG2_LesnaShah_database_to_Silver_ODS"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "cf448389-a9ae-ab1c-4db1-56d15adef293"
+  }
+}

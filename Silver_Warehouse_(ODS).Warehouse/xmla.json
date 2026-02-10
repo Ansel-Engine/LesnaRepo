@@ -1,0 +1,541 @@
+{
+  "name": "{{Dataset_Name}}",
+  "compatibilityLevel": 1604,
+  "model": {
+    "name": "{{Dataset_Name}}",
+    "culture": "en-US",
+    "collation": "Latin1_General_100_BIN2_UTF8",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "C_CONTROL_PROCESS_INSTANCE",
+        "sourceLineageTag": "[CONTROL].[C_CONTROL_PROCESS_INSTANCE]",
+        "columns": [
+          {
+            "name": "CONTROL_PROC_INST_ID",
+            "dataType": "int64",
+            "sourceColumn": "CONTROL_PROC_INST_ID",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "CONTROL_PROC_INST_ID",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "CONTROL_PROC_ID",
+            "dataType": "int64",
+            "sourceColumn": "CONTROL_PROC_ID",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "CONTROL_PROC_ID",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "CONTROL_PROC_INST_START_DATETIME",
+            "dataType": "dateTime",
+            "sourceColumn": "CONTROL_PROC_INST_START_DATETIME",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "CONTROL_PROC_INST_START_DATETIME",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "CONTROL_PROC_INST_END_DATETIME",
+            "dataType": "dateTime",
+            "sourceColumn": "CONTROL_PROC_INST_END_DATETIME",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "CONTROL_PROC_INST_END_DATETIME",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "CONTROL_PROC_INST_RUNNING_FLAG",
+            "dataType": "int64",
+            "sourceColumn": "CONTROL_PROC_INST_RUNNING_FLAG",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "CONTROL_PROC_INST_RUNNING_FLAG",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "CONTROL_PROC_INST_ERROR_FLAG",
+            "dataType": "int64",
+            "sourceColumn": "CONTROL_PROC_INST_ERROR_FLAG",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "CONTROL_PROC_INST_ERROR_FLAG",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "C_CONTROL_PROCESS_INSTANCE",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "CONTROL"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "ZENDESK Z_Organisations",
+        "sourceLineageTag": "[dbo].[ZENDESK Z_Organisations]",
+        "columns": [
+          {
+            "name": "FK_organizations",
+            "dataType": "int64",
+            "sourceColumn": "FK_organizations",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "FK_organizations",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "id",
+            "dataType": "int64",
+            "sourceColumn": "id",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "id",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "name",
+            "dataType": "string",
+            "sourceColumn": "name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "is_shared",
+            "dataType": "string",
+            "sourceColumn": "is_shared",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "is_shared",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "created_at",
+            "dataType": "dateTime",
+            "sourceColumn": "created_at",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "created_at",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "updated_at",
+            "dataType": "dateTime",
+            "sourceColumn": "updated_at",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "updated_at",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "group_id",
+            "dataType": "string",
+            "sourceColumn": "group_id",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "group_id",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "details",
+            "dataType": "string",
+            "sourceColumn": "details",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "details",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "notes",
+            "dataType": "string",
+            "sourceColumn": "notes",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "notes",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "external_id",
+            "dataType": "string",
+            "sourceColumn": "external_id",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "external_id",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "current_tags",
+            "dataType": "string",
+            "sourceColumn": "current_tags",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "current_tags",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "ZENDESK Z_Organisations",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "latest_spanishspeakingcountries_source_from_view",
+        "sourceLineageTag": "[dbo].[latest_spanishspeakingcountries_source_from_view]",
+        "columns": [
+          {
+            "name": "country_name",
+            "dataType": "string",
+            "sourceColumn": "country_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "country_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "official_country_name",
+            "dataType": "string",
+            "sourceColumn": "official_country_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "official_country_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "flag_description",
+            "dataType": "string",
+            "sourceColumn": "flag_description",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "flag_description",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "area",
+            "dataType": "double",
+            "sourceColumn": "area",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "area",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "load_date",
+            "dataType": "string",
+            "sourceColumn": "load_date",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "load_date",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "latest_spanishspeakingcountries_source_from_view",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "spanishspeakingcountries",
+        "sourceLineageTag": "[dbo].[spanishspeakingcountries]",
+        "columns": [
+          {
+            "name": "ODS_KEY",
+            "dataType": "string",
+            "sourceColumn": "ODS_KEY",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ODS_KEY",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "country_name",
+            "dataType": "string",
+            "sourceColumn": "country_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "country_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "official_country_name",
+            "dataType": "string",
+            "sourceColumn": "official_country_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "official_country_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "flag_description",
+            "dataType": "string",
+            "sourceColumn": "flag_description",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "flag_description",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "area",
+            "dataType": "double",
+            "sourceColumn": "area",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "area",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "load_date",
+            "dataType": "dateTime",
+            "sourceColumn": "load_date",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "load_date",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "spanishspeakingcountries",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      }
+    ],
+    "expressions": [
+      {
+        "name": "DatabaseQuery",
+        "kind": "m",
+        "expression": "let\n    database = {{TDS_Endpoint}}\nin\n    database\n"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "SourceLineageTagType",
+        "value": "DatabaseFullyQualifiedName"
+      }
+    ]
+  }
+}

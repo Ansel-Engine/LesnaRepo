@@ -1,0 +1,67 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {
+    "allowFastCopy": false
+  },
+  "name": "DF_SalesForce1",
+  "queryGroups": [],
+  "documentLocale": "en-GB",
+  "queriesMetadata": {
+    "Account": {
+      "queryId": "b202f15c-95e4-4094-bb71-bfbc3f8e5c2a",
+      "queryName": "Account",
+      "loadEnabled": false
+    },
+    "Address": {
+      "queryId": "ddf3d61c-726b-435f-aed3-f1c1d80a75e4",
+      "queryName": "Address",
+      "loadEnabled": false
+    },
+    "Contract": {
+      "queryId": "68f86b14-2621-4815-9856-6f62fbe159a4",
+      "queryName": "Contract",
+      "loadEnabled": false
+    },
+    "Event": {
+      "queryId": "754d321b-c493-459a-95d4-fe151a08d1ee",
+      "queryName": "Event",
+      "loadEnabled": false
+    },
+    "Address_DataDestination": {
+      "queryId": "1131c34c-1bed-45ee-8f94-ff9214db021f",
+      "queryName": "Address_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "Event_DataDestination": {
+      "queryId": "1261ac37-bbe8-43cd-8467-21dcf0d6968f",
+      "queryName": "Event_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "Account_DataDestination": {
+      "queryId": "ed5890bd-b3f7-4e03-850e-ec5b27542839",
+      "queryName": "Account_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "Contract_DataDestination": {
+      "queryId": "aee7e0cf-984c-4bdb-8931-aad7e951e91d",
+      "queryName": "Contract_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "https://login.salesforce.com/",
+      "kind": "Salesforce",
+      "connectionId": "{\"ClusterId\":\"1e7c6227-466b-4cc3-ad3c-509dbfcb06df\",\"DatasourceId\":\"60758ef7-c778-4cd6-b9c6-65947ac9ff49\"}"
+    },
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"1e7c6227-466b-4cc3-ad3c-509dbfcb06df\",\"DatasourceId\":\"8f93ca41-d4db-4d7a-b411-71d01d400186\"}"
+    }
+  ]
+}

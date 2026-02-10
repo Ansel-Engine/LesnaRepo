@@ -1,0 +1,45 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "Dataflow 2",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "spanishspeakingcountries": {
+      "queryId": "2bacfd08-7ba7-4ccb-8032-3f67b11ceb4f",
+      "queryName": "spanishspeakingcountries"
+    },
+    "spanishspeakingcountries_DataDestination": {
+      "queryId": "a206c3c1-04fd-4811-bee8-df6d678d4034",
+      "queryName": "spanishspeakingcountries_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "CONTROL C_CONTROL_PROCESS_INSTANCE": {
+      "queryId": "bcb48321-a31a-4ff0-8184-918679fcfe21",
+      "queryName": "CONTROL C_CONTROL_PROCESS_INSTANCE"
+    },
+    "Merge": {
+      "queryId": "5a0f9174-2da9-4ff9-b05c-2afb090b51fe",
+      "queryName": "Merge"
+    },
+    "Merge_DataDestination": {
+      "queryId": "36fe13c2-ee18-4742-a941-a76f358c1c69",
+      "queryName": "Merge_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"1e7c6227-466b-4cc3-ad3c-509dbfcb06df\",\"DatasourceId\":\"8f93ca41-d4db-4d7a-b411-71d01d400186\"}"
+    },
+    {
+      "path": "Warehouse",
+      "kind": "Warehouse",
+      "connectionId": "{\"ClusterId\":\"1e7c6227-466b-4cc3-ad3c-509dbfcb06df\",\"DatasourceId\":\"3fe2af49-72b6-48ca-ae83-edbb12c57458\"}"
+    }
+  ]
+}

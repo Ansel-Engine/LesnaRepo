@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "UserDataFunction",
+    "displayName": "udf_error_logging"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5abc0c9c-7564-b71f-48ad-f0711b1f1056"
+  }
+}
