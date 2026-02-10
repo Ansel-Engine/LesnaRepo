@@ -1,0 +1,67 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {
+            "origins": "HA3+8UF",
+            "destinations": "MK40+2ED",
+            "mode": "driving",
+            "units": "metric",
+            "key": "AIzaSyB94X0cLJ5AicsA63FTASdWVhD0LYgSJ5o"
+          },
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "6a61527a-28e0-b705-406c-f5c30b1f937f",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "7ca239ab-96e1-451e-9745-cdc916c6ec20"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "PL_Get_Distance_From_GoogleMaps_API",
+        "dependsOn": []
+      },
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {
+            "postcode1": "SW1A 1AA",
+            "postcode2": "OX1 2JD",
+            "api_key": "AIzaSyDCjvuVQGZFeA5fgYOGFjWWApuzFWT4N74"
+          },
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "ff34b269-72b2-91f9-4227-7cb9035293dc",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "7ca239ab-96e1-451e-9745-cdc916c6ec20"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "PL_Get_GeoDistance_From_GoogleMapsAPI",
+        "dependsOn": [
+          {
+            "activity": "PL_Get_Distance_From_GoogleMaps_API",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

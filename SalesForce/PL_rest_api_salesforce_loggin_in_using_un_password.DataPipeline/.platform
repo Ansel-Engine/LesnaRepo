@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "PL_rest_api_salesforce_loggin_in_using_un_password"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "96f998db-01fe-9c3e-4686-20beff34096c"
+  }
+}

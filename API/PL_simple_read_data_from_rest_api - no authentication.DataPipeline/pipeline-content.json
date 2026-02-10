@@ -1,0 +1,148 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "RestSource",
+            "requestMethod": "GET",
+            "paginationRules": {
+              "supportRFC5988": "true"
+            },
+            "httpRequestTimeout": "00:01:40",
+            "requestInterval": "00.00:00:00.010",
+            "datasetSettings": {
+              "type": "RestResource",
+              "schema": [],
+              "externalReferences": {
+                "connection": "02486641-8152-4878-8ac8-02732525032f"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "OverwriteSchema",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "table": "rest_api_data"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "LH_Fabric",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "5970b70e-d9ac-a2da-4924-3b2dcde07ee3",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "mappings": [
+              {
+                "source": {
+                  "name": "data.id",
+                  "type": "Int64"
+                },
+                "sink": {
+                  "name": "id",
+                  "physicalType": "long"
+                }
+              },
+              {
+                "source": {
+                  "name": "data.email",
+                  "type": "String"
+                },
+                "sink": {
+                  "name": "email",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "data.first_name",
+                  "type": "String"
+                },
+                "sink": {
+                  "name": "first_name",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "data.last_name",
+                  "type": "String"
+                },
+                "sink": {
+                  "name": "last_name",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "data.avatar",
+                  "type": "String"
+                },
+                "sink": {
+                  "name": "avatar",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "support.url",
+                  "type": "String"
+                },
+                "sink": {
+                  "name": "url",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "support.text",
+                  "type": "String"
+                },
+                "sink": {
+                  "name": "text",
+                  "physicalType": "string"
+                }
+              }
+            ],
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            },
+            "columnFlattenSettings": {
+              "treatArrayAsString": false,
+              "treatStructAsString": false,
+              "flattenColumnDelimiter": "."
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Copy data1",
+        "dependsOn": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "PL_Orchestration_For_GoogleMapsAPI_Data",
+    "description": ""
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "51f0ab53-76fb-8a44-4869-3246f178b348"
+  }
+}
